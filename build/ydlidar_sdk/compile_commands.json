@@ -1,0 +1,92 @@
+[
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/base/timer.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/base/timer.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/base/timer.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/common/ydlidar_def.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/common/ydlidar_def.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/common/ydlidar_def.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/network/ActiveSocket.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/ActiveSocket.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/ActiveSocket.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/network/PassiveSocket.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/PassiveSocket.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/PassiveSocket.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/network/SimpleSocket.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/SimpleSocket.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/network/SimpleSocket.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/serial/serial.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/serial.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/serial.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/cc  -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test    -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/serial/impl/unix/lock.c.o   -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/lock.c",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/lock.c"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/serial/impl/unix/list_ports_linux.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/list_ports_linux.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/list_ports_linux.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/core/serial/impl/unix/unix_serial.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/unix_serial.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core/serial/impl/unix/unix_serial.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/src/CYdLidar.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/CYdLidar.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/CYdLidar.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/src/ETLidarDriver.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ETLidarDriver.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ETLidarDriver.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/src/ydlidar_driver.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ydlidar_driver.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ydlidar_driver.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test   -std=c++11   -fPIC -o CMakeFiles/ydlidar_sdk.dir/src/ydlidar_sdk.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ydlidar_sdk.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src/ydlidar_sdk.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/.. -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples   -std=c++11   -fPIC -std=c++11 -o CMakeFiles/ydlidar_test.dir/ydlidar_test.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/ydlidar_test.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/ydlidar_test.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/.. -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples   -std=c++11   -fPIC -std=c++11 -o CMakeFiles/tof_test.dir/tof_test.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/tof_test.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/tof_test.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples",
+  "command": "/usr/bin/cc  -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/.. -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples    -fPIC -std=c++11 -o CMakeFiles/lidar_c_api_test.dir/lidar_c_api_test.c.o   -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/lidar_c_api_test.c",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/lidar_c_api_test.c"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/.. -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/samples   -std=c++11   -fPIC -std=c++11 -o CMakeFiles/etlidar_test.dir/etlidar_test.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/etlidar_test.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/samples/etlidar_test.cpp"
+},
+{
+  "directory": "/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk/test",
+  "command": "/usr/bin/c++   -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/core -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/src -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK -I/workspaces/docker-ros2-ydlidar-x4/build/ydlidar_sdk -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test/.. -I/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test/.   -std=c++11   -fPIC -o CMakeFiles/lidar_test.dir/lidar_test.cpp.o -c /workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test/lidar_test.cpp",
+  "file": "/workspaces/docker-ros2-ydlidar-x4/YDLidar-SDK/test/lidar_test.cpp"
+}
+]

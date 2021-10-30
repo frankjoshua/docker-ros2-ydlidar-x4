@@ -11,7 +11,7 @@ on:
     - cron: '1 2 3 * *'
 
 env:
-  DOCKER_CONTAINER: frankjoshua/ros2-master
+  DOCKER_CONTAINER: frankjoshua/ros2-ydlidar-x4
 
 jobs:
   docker:

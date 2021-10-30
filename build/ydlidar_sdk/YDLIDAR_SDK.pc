@@ -1,0 +1,11 @@
+prefix=/workspaces/docker-ros2-ydlidar-x4/install/ydlidar_sdk
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: YDLIDAR_SDK
+Description: 
+Version: 1.0.3
+Cflags:   -I/workspaces/docker-ros2-ydlidar-x4/install/ydlidar_sdk/include/src -I/workspaces/docker-ros2-ydlidar-x4/install/ydlidar_sdk/include
+Libs: -L${libdir}  -lpthread -lrt -lydlidar_sdk
+
