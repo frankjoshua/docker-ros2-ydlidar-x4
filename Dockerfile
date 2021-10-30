@@ -19,7 +19,6 @@ COPY src/ src/
 RUN mkdir YDLidar-SDK
 COPY YDLidar-SDK/ ./YDLidar-SDK/
 RUN cd YDLidar-SDK/build \
-        && git clean -fd \
         && sudo cmake .. \
         && sudo make \
         && sudo make install
