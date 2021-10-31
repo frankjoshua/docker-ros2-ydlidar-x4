@@ -2,7 +2,7 @@
 
 ## Description
 
-Runs a ros master in a Docker container. Probably need --network="host" because ROS uses ephemeral ports.
+Runs a ros2 YDLidar X4 laser in a Docker container. Probably need --network="host" because ROS uses ephemeral ports and --privileged for serial access.
 
 ## Example
 
