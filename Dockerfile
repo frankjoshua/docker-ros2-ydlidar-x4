@@ -30,16 +30,17 @@ ENV DEBIAN_FRONTEND=
 #    && rm -rf /var/lib/apt/lists/*
 # ENV DEBIAN_FRONTEND=dialog
 ARG WORKSPACE=/home/ros
-USER ros
+
 SHELL [ "/bin/bash", "-i", "-c" ]
 WORKDIR ${WORKSPACE}
 COPY src/ src/
 RUN mkdir YDLidar-SDK
 COPY YDLidar-SDK/ ./YDLidar-SDK/
 RUN cd YDLidar-SDK/build \
-        && sudo cmake .. \
-        && sudo make \
-        && sudo make install
+        && cmake .. \
+        && make \
+        && make install
+USER ros
 RUN colcon build --symlink-install
 
 # Set up auto-source of workspace for ros user
