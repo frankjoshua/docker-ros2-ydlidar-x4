@@ -4,8 +4,8 @@ project(ydlidar_sdk C CXX)
 #########################################################
 # version
 set(YDLIDAR_SDK_VERSION_MAJOR 1)
-set(YDLIDAR_SDK_VERSION_MINOR 0)
-set(YDLIDAR_SDK_VERSION_PATCH 3)
+set(YDLIDAR_SDK_VERSION_MINOR 2)
+set(YDLIDAR_SDK_VERSION_PATCH 6)
 set(YDLIDAR_SDK_VERSION ${YDLIDAR_SDK_VERSION_MAJOR}.${YDLIDAR_SDK_VERSION_MINOR}.${YDLIDAR_SDK_VERSION_PATCH})
 
 ##########################################################
@@ -20,8 +20,21 @@ ENDIF()
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 ##########################################################
-# add -fPIC
-add_compile_options(-fPIC)
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    MESSAGE(STATUS "Current platform: Linux")
+	#Linux add -fPIC
+	add_compile_options(-fPIC)
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    MESSAGE(STATUS "Current platform: Windows")
+	MESSAGE(STATUS "Current compiler: ${CMAKE_CXX_COMPILER_ID}")
+	IF (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+	#MSVC compiler
+	add_compile_options("/utf-8")
+	add_definitions(-DWIN32_LEAN_AND_MEAN)
+	ELSEIF (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+	#MinGW compiler
+	ENDIF (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 #or
 #set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -56,13 +69,13 @@ endif()
 option( BUILD_SHARED_LIBS "Build shared libraries." OFF)
 option( BUILD_EXAMPLES "Build Example." ON)
 option( BUILD_CSHARP "Build CSharp." OFF)
-option( BUILD_TEST "Build Test." ON)
+option( BUILD_TEST "Build Test." OFF)
 
 ############################################################################
 # find package
-FIND_PACKAGE(SWIG)
+find_package(SWIG)
 find_package(PythonInterp)
-FIND_PACKAGE(PythonLibs)
+find_package(PythonLibs)
 find_package(GTest)
 
 ############################################################################
@@ -79,13 +92,14 @@ add_subdirectory(src)
 ##############################
 #build examples
 if(BUILD_EXAMPLES)
-add_subdirectory(samples)
+add_subdirectory(examples)
 endif()
 
 #############################################################################
 # PARSE libraries
 include(common/ydlidar_parse)
 include_directories(${SDK_INCS})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ########################################################
 ## Create configure file for inclusion in library

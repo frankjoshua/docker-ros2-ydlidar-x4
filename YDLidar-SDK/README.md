@@ -2,15 +2,16 @@
 
 # Table of Contents
 
-1. [Introduction](#introduction)
+1. [Table of Contents](#table-of-contents)
+2. [Introduction](#introduction)
     - [Prerequisites](#prerequisites)
     - [Supported Languages](#supported-languages)
-2. [YDLidar SDK Communication Protocol](#ydlidar-sdk-communication-protocol)
-3. [Architecture](#architecture)
-4. [Installation](#installation)
-5. [Documents](#documents)
-6. [Support](#support)
-7. [Contact EAI](#contact-eai)
+3. [YDLidar SDK Communication Protocol](#ydlidar-sdk-communication-protocol)
+4. [Architecture](#architecture)
+5. [Installation](#installation)
+6. [Documents](#documents)
+7. [Support](#support)
+8. [Contact EAI](#contact-eai)
 
 # Introduction
 
@@ -20,7 +21,7 @@ YDLidar SDK consists of YDLidar SDK communication protocol, YDLidar SDK core, YD
 
 ### Prerequisites
 * Linux
-* Windows 7/10, Visual Studio 2015/2017
+* Windows 7/10, Visual Studio 2015/2017(UTF-8 encoding)
 * C++11 compiler
 
 ### Supported Languages

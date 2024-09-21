@@ -9,6 +9,8 @@ Runs a ros2 YDLidar X4 laser in a Docker container. Probably need --network="hos
 ```
 docker run -it \
     --network="host" \
+    --ipc=host \
+    --pid=host \
     --privileged \
     frankjoshua/ros2-ydlidar-x4
 ```

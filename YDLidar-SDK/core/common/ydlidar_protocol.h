@@ -41,21 +41,18 @@
 #define _countof(_Array) (int)(sizeof(_Array) / sizeof(_Array[0]))
 #endif
 
-/**
- * @name PI constant
- * @{
- */
 #ifndef M_PI
 #define M_PI 3.1415926
 #endif
-/** @}
-*/
+
+//浮点型判断是否为0
+#define ISZERO(v) (abs(v) < 1e-6)
 
 /**
  * @name sun noise flag constant
  * @{
  */
-#define SUNNOISEINTENSITY 0xff
+#define SUNNOISEINTENSITY 0x03
 /** @}
 */
 
@@ -63,7 +60,7 @@
  * @name glass noise flag constant
  * @{
  */
-#define GLASSNOISEINTENSITY 0xfe
+#define GLASSNOISEINTENSITY 0x02
 /** @}
 */
 
@@ -86,12 +83,12 @@
 #define LIDAR_ANS_SYNC_BYTE1                0xA5
 #define LIDAR_ANS_SYNC_BYTE2                0x5A
 #define LIDAR_ANS_TYPE_MEASUREMENT          0x81
-#define LIDAR_RESP_MEASUREMENT_SYNCBIT        (0x1<<0)
-#define LIDAR_RESP_MEASUREMENT_QUALITY_SHIFT  2
-#define LIDAR_RESP_MEASUREMENT_CHECKBIT       (0x1<<0)
-#define LIDAR_RESP_MEASUREMENT_ANGLE_SHIFT    1
-#define LIDAR_RESP_MEASUREMENT_DISTANCE_SHIFT  2
-#define LIDAR_RESP_MEASUREMENT_ANGLE_SAMPLE_SHIFT 8
+#define LIDAR_RESP_SYNCBIT        (0x1<<0)
+#define LIDAR_RESP_QUALITY_SHIFT  2
+#define LIDAR_RESP_CHECKBIT       (0x1<<0)
+#define LIDAR_RESP_ANGLE_SHIFT    1
+#define LIDAR_RESP_DIST_SHIFT  2
+#define LIDAR_RESP_ANGLE_SAMPLE_SHIFT 8
 
 #define LIDAR_CMD_RUN_POSITIVE             0x06
 #define LIDAR_CMD_RUN_INVERSION            0x07
@@ -121,10 +118,64 @@
 
 #define LIDAR_CMD_SET_HEART_BEAT            0xD9
 
-/** @} LIDAR CMD Protocol */
+//GS命令
+#define GS_LIDAR_CMD_GET_ADDRESS               0x60
+#define GS_LIDAR_CMD_GET_PARAMETER             0x61
+#define GS_LIDAR_CMD_GET_VERSION               0x62
+#define GS_LIDAR_CMD_GET_VERSION3              0x6B
+#define GS_LIDAR_CMD_SCAN                      0x63
+#define GS_LIDAR_ANS_SCAN                      0x63
+#define GS_LIDAR_CMD_STOP                      0x64
+#define GS_LIDAR_CMD_RESET                     0x67
+#define GS_LIDAR_CMD_SET_MODE                  0x69
+#define GS_LIDAR_CMD_SET_BIAS                  0xD9
+#define GS_LIDAR_CMD_SET_DEBUG_MODE            0xF0
 
-/// Maximuum number of samples in a packet
-#define PackageSampleMaxLngth 0x100
+//模组地址
+#define LIDAR_MODULE_1 0x01
+#define LIDAR_MODULE_2 0x02
+#define LIDAR_MODULE_3 0x04
+#define LIDAR_MODULE_ALL 0x00
+#define LIDAR_MAXCOUNT 3 //最大模组数
+#define LIDAR_PACKMAXPOINTSIZE 160 //单包最大点数
+
+//GS
+#define Angle_Px 1.22
+#define Angle_Py 5.315
+#define Angle_PAngle 22.5 //GS2
+#define Angle_PAngle2 19.0 //GS5
+#define GS_PACKHEADSIZE 8
+#define GS_MAXPOINTSIZE 160 //GS数据包中最大点云数
+
+#define SDK_SNLEN 16 //序列号长度
+
+/// Default Node Quality
+#define Node_Default_Quality (10)
+/// Starting Node
+#define Node_Sync 1
+/// Normal Node
+#define Node_NotSync 2
+/// Package Header
+#define PH 0x55AA
+#define PH1 0xAA
+#define PH2 0x55 //AA55是点云数据
+#define PH3 0x66 //AA66是时间戳数据
+
+/// Package Header Size
+#define TRI_PACKHEADSIZE 10
+/// Normal Package size
+#define TRI_PACKDATASIZE 40
+
+#define FREINDEX 0
+#define USERVERSIONNDEX 1
+#define HEALTHINDEX 3
+
+//超时定义
+#define TIMEOUT_100 100
+#define TIMEOUT_300 300
+#define TIMEOUT_500 500 //500ms
+#define TIMEOUT_1S 1000
+#define TIMEOUT_2S 2000
 
 /// CT Package Type
 typedef enum {
@@ -133,97 +184,115 @@ typedef enum {
   CT_Tail,
 } CT;
 
-/// Default Node Quality
-#define Node_Default_Quality (10)
-/// Starting Node
-#define Node_Sync 1
-/// Normal Node
-#define Node_NotSync 2
-/// Package Header Size
-#define PackagePaidBytes 10
-/// Package Header
-#define PH 0x55AA
-/// Normal Package size
-#define TrianglePackageDataSize 40
-/// TOF Normal package size
-#define TOFPackageDataSize 80
-
-/// ET LiDAR Protocol Type
+//雷达协议类型
 typedef enum {
-  Protocol_V1 = 0,///< V1 version
-  Protocol_V2  = 1,///< V2 version
+  Protocol_V1 = 0, //V1 version
+  Protocol_V2 = 1, //V2 version
 } ProtocolVer;
+
+//设备所属平台类型
+enum EaiPlatformType
+{
+  EPT_None = 0x00, //无
+  EPT_Module = 0x01, //模组
+  EPT_Base = 0x02, //底板
+  EPT_All = (EPT_Module | EPT_Base), //所有
+};
 
 #if defined(_WIN32)
 #pragma pack(1)
 #endif
 
-/// LiDAR Node info
+//雷达节点信息
 struct node_info {
-  uint8_t    sync_flag;  ///< sync flag
-  uint16_t   sync_quality;///< intensity
-  uint16_t   angle_q6_checkbit; ///< angle
-  uint16_t   distance_q2; ///< range
-  uint64_t   stamp; ///< time stamp
-  uint32_t   delay_time; ///< delay time
-  uint8_t    scan_frequence;///< scan frequency. invalid: 0
-  uint8_t    debugInfo;///< debug information
-  uint8_t    index;///< package index
-  uint8_t    error_package;///< error package state
-} __attribute__((packed)) ;
+  uint8_t sync; //首包标记
+  uint8_t is; //抗干扰标志
+  uint16_t qual; //信号强度
+  uint16_t angle; //角度值（°）
+  uint16_t dist; //距离值
+  uint64_t stamp; //时间戳
+  uint32_t delayTime; //delay time
+  uint8_t scanFreq; //扫描频率
+  uint8_t debugInfo; //debug information
+  uint8_t index; //包序号
+  uint8_t error; //error package state
+} __attribute__((packed));
+#define SDKNODESIZE sizeof(node_info)
 
-/// package node info
-struct PackageNode {
-  uint8_t PakageSampleQuality;///< intensity
-  uint16_t PakageSampleDistance;///< range
+//package node info
+struct tri_node {
+  uint16_t dist; //range
 } __attribute__((packed));
 
-/// TOF Intensity package node info
-struct TOFPackageNode {
-  uint16_t PakageSampleQuality;
-  uint16_t PakageSampleDistance;
+//package node info
+struct tri_node2 {
+  uint8_t qual;///< intensity
+  uint16_t dist;///< range
 } __attribute__((packed));
 
-/// LiDAR Intensity Nodes Package
-struct node_package {
-  uint16_t  package_Head;///< package header
-  uint8_t   package_CT;///< package ct
-  uint8_t   nowPackageNum;///< package number
-  uint16_t  packageFirstSampleAngle;///< first sample angle
-  uint16_t  packageLastSampleAngle;///< last sample angle
-  uint16_t  checkSum;///< checksum
-  PackageNode  packageSample[PackageSampleMaxLngth];
-} __attribute__((packed)) ;
+// TOF Intensity package node info
+struct tof_node {
+  uint16_t qual;
+  uint16_t dist;
+} __attribute__((packed));
 
-/// TOF LiDAR Intensity Nodes Package
+//LiDAR Normal Nodes package
+struct tri_node_package {
+  uint16_t  head;///< package header
+  uint8_t   ct;///< package ct
+  uint8_t   count; ///< package number
+  uint16_t  firstAngle;///< first sample angle
+  uint16_t  lastAngle;///< last sample angle
+  uint16_t  cs;///< checksum
+  uint16_t  nodes[LIDAR_PACKMAXPOINTSIZE];
+} __attribute__((packed));
+
+//LiDAR Intensity Nodes Package
+struct tri_node_package2 {
+  uint16_t  head;///< package header
+  uint8_t   ct;///< package ct
+  uint8_t   count;///< package number
+  uint16_t  firstAngle;///< first sample angle
+  uint16_t  lastAngle;///< last sample angle
+  uint16_t  cs;///< checksum
+  tri_node2  nodes[LIDAR_PACKMAXPOINTSIZE];
+} __attribute__((packed));
+
+// TOF LiDAR Intensity Nodes Package
 struct tof_node_package {
-  uint16_t  package_Head;
-  uint8_t   package_CT;
-  uint8_t   nowPackageNum;
-  uint16_t  packageFirstSampleAngle;
-  uint16_t  packageLastSampleAngle;
-  uint16_t  checkSum;
-  TOFPackageNode  packageSample[PackageSampleMaxLngth];
-} __attribute__((packed)) ;
+  uint16_t  head;
+  uint8_t   ct;
+  uint8_t   count;
+  uint16_t  firstAngle;
+  uint16_t  lastAngle;
+  uint16_t  cs;
+  tof_node  nodes[LIDAR_PACKMAXPOINTSIZE];
+} __attribute__((packed));
 
-/// LiDAR Normal Nodes package
-struct node_packages {
-  uint16_t  package_Head;///< package header
-  uint8_t   package_CT;///< package ct
-  uint8_t   nowPackageNum; ///< package number
-  uint16_t  packageFirstSampleAngle;///< first sample angle
-  uint16_t  packageLastSampleAngle;///< last sample angle
-  uint16_t  checkSum;///< checksum
-  uint16_t  packageSampleDistance[PackageSampleMaxLngth];
-} __attribute__((packed)) ;
+//时间戳结构体
+struct stamp_package {
+  uint8_t flag1; //包头标记1
+  uint8_t flag2; //包头标记2
+  uint8_t cs; //校验和
+  uint32_t stamp; //时间戳
+  uint8_t reserved; //保留字段
+} __attribute__((packed));
+#define SIZE_STAMPPACKAGE sizeof(stamp_package)
 
-/// LiDAR Device Information
+//设备信息结构体
 struct device_info {
-  uint8_t   model; ///< LiDAR model
-  uint16_t  firmware_version; ///< firmware version
-  uint8_t   hardware_version; ///< hardare version
-  uint8_t   serialnum[16];    ///< serial number
-} __attribute__((packed)) ;
+  uint8_t   model; //雷达型号码
+  uint16_t  firmware_version; //固件版本
+  uint8_t   hardware_version; //硬件版本
+  uint8_t   serialnum[SDK_SNLEN]; //序列号
+} __attribute__((packed));
+#define DEVICEINFOSIZE sizeof(device_info)
+
+//设备信息结构体（带模组序号）
+struct device_info_ex {
+  uint8_t id = 0;
+  device_info di = {0};
+};
 
 /// LiDAR Health Information
 struct device_health {
@@ -284,6 +353,77 @@ struct lidar_ans_header {
   uint32_t subType: 2;
   uint8_t  type;
 } __attribute__((packed));
+#define TRIRESPHEADSIZE sizeof(lidar_ans_header) //定义通用响应头大小
+
+//GS单帧数据
+struct gs_packages {
+    int frameNum;
+    int moduleNum;
+    bool left = false;
+    bool right = false;
+    node_info points[GS_MAXPOINTSIZE];
+} __attribute__((packed));
+struct gs_module_nodes {
+  int moduleNum = 0;
+  int pointCount = 0;
+  node_info points[GS_MAXPOINTSIZE];
+} __attribute__((packed));
+
+//GS点数据结构
+struct gs_node {
+  // uint16_t dist : 9;
+  // uint16_t qual : 7;
+  uint16_t node;
+} __attribute__((packed));
+#define GSNODESIZE sizeof(gs_node) //定义GS点大小
+
+//GS单包数据结构
+struct gs_node_package {
+  uint32_t head;
+  uint8_t address;
+  uint8_t ct;
+  uint16_t size;
+  uint16_t env;
+  gs_node nodes[GS_MAXPOINTSIZE];
+  uint8_t cs;
+} __attribute__((packed));
+#define GSPACKSIZE sizeof(gs_node_package) //定义GS点大小
+
+//GS设备参数
+struct gs_device_para {
+    uint16_t k0;
+    uint16_t b0;
+    uint16_t k1;
+    uint16_t b1;
+    int8_t bias;
+    uint8_t crc;
+} __attribute__((packed));
+//GS包头
+struct gs_package_head {
+    uint8_t syncByte0;
+    uint8_t syncByte1;
+    uint8_t syncByte2;
+    uint8_t syncByte3;
+    uint8_t address;
+    uint8_t type;
+    uint16_t size;
+} __attribute__((packed));
+#define GSPACKEGEHEADSIZE sizeof(gs_package_head)
+//GS系列设备信息
+struct gs_device_info {
+    uint8_t hwVersion; //硬件版本号
+    uint16_t fwVersion; //固件版本号
+    uint8_t sn[16]; //序列号
+} __attribute__((packed));
+#define GSDEVINFOSIZE sizeof(gs_device_info)
+//GS系列设备信息（带雷达型号）
+struct gs_device_info2 {
+    uint8_t hwVersion; //硬件版本号
+    uint16_t fwVersion; //固件版本号
+    uint8_t model; //型号
+    uint8_t sn[16]; //序列号
+} __attribute__((packed));
+#define GSDEVINFO2SIZE sizeof(gs_device_info2)
 
 #if defined(_WIN32)
 #pragma pack()

@@ -42,6 +42,8 @@
 #pragma once
 #include "DriverInterface.h"
 #include <sstream>
+#include <iomanip>
+#include <stdarg.h>
 
 /**
  * @brief ydlidar
@@ -63,134 +65,128 @@ namespace common {
  * @param model lidar model
  * @return lidar model name
  */
-inline std::string lidarModelToString(int model) {
+inline std::string lidarModelToString(int model)
+{
   std::string name = "unkown";
 
-  switch (model) {
-    case DriverInterface::YDLIDAR_F4:
-      name = "F4";
-      break;
-
-    case DriverInterface::YDLIDAR_T1:
-      name = "T1";
-
-      break;
-
-    case DriverInterface::YDLIDAR_F2:
-      name = "F2";
-
-      break;
-
-    case DriverInterface::YDLIDAR_S4:
-      name = "S4";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G4:
-      name = "G4";
-
-      break;
-
-    case DriverInterface::YDLIDAR_X4:
-      name = "X4";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G4PRO:
-      name = "G4PRO";
-
-      break;
-
-    case DriverInterface::YDLIDAR_F4PRO:
-      name = "F4PRO";
-
-      break;
-
-    case DriverInterface::YDLIDAR_R2:
-      name = "R2";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G10:
-      name = "G10";
-
-      break;
-
-    case DriverInterface::YDLIDAR_S4B:
-      name = "S4B";
-
-      break;
-
-    case DriverInterface::YDLIDAR_S2:
-      name = "S2";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G6:
-      name = "G6";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G2A:
-      name = "G2A";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G2B:
-      name = "G2B";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G2C:
-      name = "G2C";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G4B:
-      name = "G4B";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G4C:
-      name = "G4C";
-      break;
-
-    case DriverInterface::YDLIDAR_G1:
-      name = "G1";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G5:
-      name = "G5";
-
-      break;
-
-    case DriverInterface::YDLIDAR_G7:
-      name = "G7";
-
-      break;
-
-    case DriverInterface::YDLIDAR_TG15:
-      name = "TG15";
-
-      break;
-
-    case DriverInterface::YDLIDAR_TG30:
-      name = "TG30";
-
-      break;
-
-    case DriverInterface::YDLIDAR_TG50:
-      name = "TG50";
-      break;
-
-    case DriverInterface::YDLIDAR_T15:
-      name = "T15";
-      break;
-
-    default:
-      name = "unkown(YD-" + std::to_string(model) + ")";
-      break;
+  switch (model)
+  {
+  case DriverInterface::YDLIDAR_F4:
+    name = "F4";
+    break;
+  case DriverInterface::YDLIDAR_T1:
+    name = "T1";
+    break;
+  case DriverInterface::YDLIDAR_F2:
+    name = "F2";
+    break;
+  // case DriverInterface::YDLIDAR_S4:
+  case DriverInterface::YDLIDAR_S2PRO:
+    name = "S2PRO";
+    break;
+  case DriverInterface::YDLIDAR_G4:
+    name = "G4";
+    break;
+  case DriverInterface::YDLIDAR_X4:
+    name = "X4";
+    break;
+  case DriverInterface::YDLIDAR_G4PRO:
+    name = "G4PRO";
+    break;
+  case DriverInterface::YDLIDAR_F4PRO:
+    name = "F4PRO";
+    break;
+  case DriverInterface::YDLIDAR_R2:
+    name = "R2";
+    break;
+  case DriverInterface::YDLIDAR_G10:
+    name = "G10";
+    break;
+  case DriverInterface::YDLIDAR_S4B:
+    name = "S4B";
+    break;
+  case DriverInterface::YDLIDAR_S2:
+    name = "S2";
+    break;
+  case DriverInterface::YDLIDAR_G6:
+    name = "G6";
+    break;
+  case DriverInterface::YDLIDAR_G2A:
+    name = "G2A";
+    break;
+  case DriverInterface::YDLIDAR_G2B:
+    name = "G2B";
+    break;
+  case DriverInterface::YDLIDAR_G2C:
+    name = "G2C";
+    break;
+  case DriverInterface::YDLIDAR_G4B:
+    name = "G4B";
+    break;
+  case DriverInterface::YDLIDAR_G4C:
+    name = "G4C";
+    break;
+  case DriverInterface::YDLIDAR_G1:
+    name = "G1";
+    break;
+  case DriverInterface::YDLIDAR_G5:
+    name = "G5";
+    break;
+  case DriverInterface::YDLIDAR_G7:
+    name = "G7";
+    break;
+  case DriverInterface::YDLIDAR_SCL:
+    name = "SCL";
+    break;
+  case DriverInterface::YDLIDAR_R3:
+    name = "R3";
+    break;
+  case DriverInterface::YDLIDAR_GS1:
+    name = "GS1";
+    break;
+  case DriverInterface::YDLIDAR_GS2:
+    name = "GS2";
+    break;
+  case DriverInterface::YDLIDAR_GS5:
+    name = "GS5";
+    break;
+  case DriverInterface::YDLIDAR_TG15:
+    name = "TG15";
+    break;
+  case DriverInterface::YDLIDAR_TG30:
+    name = "TG30";
+    break;
+  case DriverInterface::YDLIDAR_TG50:
+    name = "TG50";
+    break;
+  case DriverInterface::YDLIDAR_TEA:
+    name = "TEA";
+    break;
+  case DriverInterface::YDLIDAR_TSA:
+    name = "TSA";
+    break;
+  case DriverInterface::YDLIDAR_TSAPro:
+    name = "TSA Pro";
+    break;
+  case DriverInterface::YDLIDAR_Tmini:
+    name = "Tmini";
+    break;
+  case DriverInterface::YDLIDAR_TminiPro:
+    name = "Tmini Pro";
+    break;
+  case DriverInterface::YDLIDAR_TminiPlus:
+    name = "Tmini Plus";
+    break;
+  case DriverInterface::YDLIDAR_T15:
+    name = "T15";
+    break;
+  case DriverInterface::YDLIDAR_SDM15:
+    return "SDM15";
+  case DriverInterface::YDLIDAR_SDM18:
+    return "SDM18";
+  default:
+    name = "unkown(YD-" + std::to_string(model) + ")";
+    break;
   }
 
   return name;
@@ -201,109 +197,88 @@ inline std::string lidarModelToString(int model) {
  * @param model lidar model.
  * @return lidar sampling rate.
  */
-inline int lidarModelDefaultSampleRate(int model) {
-  int sample_rate = 4;
+inline std::vector<int> getDefaultSampleRate(int model) 
+{
+  std::vector<int> srs;
 
-  switch (model) {
+  switch (model) 
+  {
     case DriverInterface::YDLIDAR_F4:
-      break;
-
     case DriverInterface::YDLIDAR_T1:
-      break;
-
     case DriverInterface::YDLIDAR_F2:
+      srs.push_back(4);
       break;
-
-    case DriverInterface::YDLIDAR_S4:
+    // case DriverInterface::YDLIDAR_S4:
+    case DriverInterface::YDLIDAR_S2PRO:
+      srs.push_back(3);
+      srs.push_back(4);
       break;
-
     case DriverInterface::YDLIDAR_G4:
-      sample_rate = 9;
+      srs.push_back(9);
       break;
-
     case DriverInterface::YDLIDAR_X4:
-      sample_rate = 5;
+      srs.push_back(5);
       break;
-
     case DriverInterface::YDLIDAR_G4PRO:
-      sample_rate = 9;
+      srs.push_back(9);
       break;
-
     case DriverInterface::YDLIDAR_F4PRO:
-      sample_rate = 4;
+      srs.push_back(4);
       break;
-
     case DriverInterface::YDLIDAR_R2:
-      sample_rate = 5;
+      srs.push_back(5);
       break;
-
     case DriverInterface::YDLIDAR_G10:
-      sample_rate = 10;
+      srs.push_back(10);
       break;
-
     case DriverInterface::YDLIDAR_S4B:
-      sample_rate = 4;
+      srs.push_back(4);
       break;
-
     case DriverInterface::YDLIDAR_S2:
-      sample_rate = 3;
+      srs.push_back(3);
       break;
-
     case DriverInterface::YDLIDAR_G6:
-      sample_rate = 18;
+      srs.push_back(18);
       break;
-
     case DriverInterface::YDLIDAR_G2A:
-      sample_rate = 5;
-      break;
-
     case DriverInterface::YDLIDAR_G2B:
-      sample_rate = 5;
+      srs.push_back(5);
       break;
-
     case DriverInterface::YDLIDAR_G2C:
-      sample_rate = 4;
-      break;
-
     case DriverInterface::YDLIDAR_G4B:
-      break;
-
     case DriverInterface::YDLIDAR_G4C:
+      srs.push_back(4);
       break;
-
     case DriverInterface::YDLIDAR_G1:
-      sample_rate = 9;
-      break;
-
     case DriverInterface::YDLIDAR_G5:
-      sample_rate = 9;
+      srs.push_back(9);
       break;
-
     case DriverInterface::YDLIDAR_G7:
-      sample_rate = 18;
+      srs.push_back(18);
       break;
-
     case DriverInterface::YDLIDAR_TG15:
-      sample_rate = 20;
+      srs.push_back(20);
       break;
-
     case DriverInterface::YDLIDAR_TG30:
-      sample_rate = 20;
+      srs.push_back(10);
+      srs.push_back(20);
       break;
-
     case DriverInterface::YDLIDAR_TG50:
-      sample_rate = 20;
+      srs.push_back(20);
       break;
-
+    case DriverInterface::YDLIDAR_TEA:
+      srs.push_back(30);
+      break;
     case DriverInterface::YDLIDAR_T15:
-      sample_rate = 20;
+      srs.push_back(20);
       break;
 
     default:
+      srs.push_back(4);
       break;
   }
 
-  return sample_rate ;
+  return srs;
 }
 
 /*!
@@ -311,15 +286,36 @@ inline int lidarModelDefaultSampleRate(int model) {
  * @param model lidar model
  * @return true if the current lidar sampling rate is octave, otherwise false
  */
-inline bool isOctaveLidar(int model) {
+inline bool isOctaveLidar(int model)
+{
   bool ret = false;
-
   if (model == DriverInterface::YDLIDAR_G6 ||
-      model == DriverInterface::YDLIDAR_G7) {
-    ret = true;
+      model == DriverInterface::YDLIDAR_G7)
+  {
+      ret = true;
   }
-
   return ret;
+}
+
+//根据雷达码判断是否是Tmini系列雷达
+inline bool isTminiLidar(int model)
+{
+  return (model == DriverInterface::YDLIDAR_Tmini ||
+          model == DriverInterface::YDLIDAR_TminiPro ||
+          model == DriverInterface::YDLIDAR_TminiPlus ||
+          model == DriverInterface::YDLIDAR_TSAPro);
+}
+
+//根据雷达码判断是否是SCL雷达
+inline bool isSCLLidar2(int model)
+{
+  return model == DriverInterface::YDLIDAR_SCL;
+}
+
+//根据雷达码判断是否是TEA雷达
+inline bool isTEALidar(int model)
+{
+  return model == DriverInterface::YDLIDAR_TEA;
 }
 
 /*!
@@ -327,29 +323,40 @@ inline bool isOctaveLidar(int model) {
  * @param model   lidar model
  * @return true if THere are multiple sampling rate, otherwise false.
  */
-inline bool hasSampleRate(int model) {
+inline bool hasSampleRate(int model) 
+{
   bool ret = false;
 
   if (model == DriverInterface::YDLIDAR_G4 ||
       model == DriverInterface::YDLIDAR_G5 ||
       model == DriverInterface::YDLIDAR_G4PRO ||
       model == DriverInterface::YDLIDAR_F4PRO ||
-      model == DriverInterface::YDLIDAR_G6 ||
+      // model == DriverInterface::YDLIDAR_G6 ||
       model == DriverInterface::YDLIDAR_G7 ||
       model == DriverInterface::YDLIDAR_TG15 ||
       model == DriverInterface::YDLIDAR_TG50 ||
-      model == DriverInterface::YDLIDAR_TG30) {
+      model == DriverInterface::YDLIDAR_TG30 ||
+      model == DriverInterface::YDLIDAR_TEA) {
     ret = true;
   }
 
   return ret;
 }
+
+inline bool isR3Lidar(int model)
+{
+  if (model == DriverInterface::YDLIDAR_R3)
+  {
+      return true;
+  }
+  return false;
+}
+
 /*!
  * @brief Is there a zero offset angle
  * @param model   lidar model
  * @return true if there are zero offset angle, otherwise false.
  */
-
 inline bool hasZeroAngle(int model) {
   bool ret = false;
 
@@ -360,7 +367,8 @@ inline bool hasZeroAngle(int model) {
       model == DriverInterface::YDLIDAR_G1 ||
       model == DriverInterface::YDLIDAR_TG15 ||
       model == DriverInterface::YDLIDAR_TG30 ||
-      model == DriverInterface::YDLIDAR_TG50) {
+      model == DriverInterface::YDLIDAR_TG50 ||
+      model == DriverInterface::YDLIDAR_TEA) {
     ret = true;
   }
 
@@ -372,13 +380,18 @@ inline bool hasZeroAngle(int model) {
  * @param model   lidar model
  * @return true if supported, otherwise false.
  */
-inline bool hasScanFrequencyCtrl(int model) {
+inline bool hasScanFrequencyCtrl(int model) 
+{
   bool ret = true;
 
   if (model == DriverInterface::YDLIDAR_S4 ||
       model == DriverInterface::YDLIDAR_S4B ||
       model == DriverInterface::YDLIDAR_S2 ||
-      model == DriverInterface::YDLIDAR_X4) {
+      model == DriverInterface::YDLIDAR_X4 ||
+      model == DriverInterface::YDLIDAR_GS1 ||
+      model == DriverInterface::YDLIDAR_GS2 ||
+      model == DriverInterface::YDLIDAR_GS5) 
+  {
     ret = false;
   }
 
@@ -390,19 +403,13 @@ inline bool hasScanFrequencyCtrl(int model) {
  * @param model   lidar model
  * @return true if supported, otherwise false.
  */
-inline bool isSupportLidar(int model) {
-  bool ret = true;
-
-  if (model < DriverInterface::YDLIDAR_F4 ||
-      (model > DriverInterface::YDLIDAR_G7 &&
-       model < DriverInterface::YDLIDAR_TG15) ||
-      (model > DriverInterface::YDLIDAR_TG50 &&
-       model < DriverInterface::YDLIDAR_T15)) {
-    ret = false;
-
-  }
-
-  return ret;
+inline bool isSupportLidar(int model)
+{
+  if (model > DriverInterface::YDLIDAR_None &&
+      model < DriverInterface::YDLIDAR_Tail)
+    return true;
+  
+  return false;
 }
 
 /*!
@@ -410,12 +417,15 @@ inline bool isSupportLidar(int model) {
  * @param model   lidar model
  * @return true if supported, otherwise false.
  */
-inline bool hasIntensity(int model) {
+inline bool hasIntensity(int model) 
+{
   bool ret = false;
 
   if (model == DriverInterface::YDLIDAR_G2B ||
       model == DriverInterface::YDLIDAR_G4B ||
-      model == DriverInterface::YDLIDAR_S4B) {
+      model == DriverInterface::YDLIDAR_S4B ||
+      model == DriverInterface::YDLIDAR_GS1 ||
+      model == DriverInterface::YDLIDAR_GS2) {
     ret = true;
   }
 
@@ -447,21 +457,48 @@ inline bool isSupportMotorCtrl(int model) {
  * @param frequency scanning frequency
  * @return true if supported, otherwise false.
  */
-inline bool isSupportScanFrequency(int model, double frequency) {
+inline bool isSupportScanFrequency(int model, double frequency)
+{
   bool ret = false;
 
-  if (model >= DriverInterface::YDLIDAR_TG15) {
-    if (1 <= frequency && frequency <= 18) {
+  if (model >= DriverInterface::YDLIDAR_TG15)
+  {
+    if (1 <= frequency && frequency <= 18)
+    {
       ret = true;
     }
 
-    if (model >= DriverInterface::YDLIDAR_T15) {
-      if (1 <= frequency && frequency <= 50) {
+    if (model == DriverInterface::YDLIDAR_SDM15)
+    {
+      if (10 <= frequency && frequency <= 1800)
+        ret = true;
+    }
+    else if (model >= DriverInterface::YDLIDAR_T15)
+    {
+      if (1 <= frequency && frequency <= 50)
+      {
         ret = true;
       }
     }
-  } else {
-    if (5 <= frequency && frequency <= 16) {
+    else if (model == DriverInterface::YDLIDAR_TEA)
+    {
+      if (10 <= frequency && frequency <= 30)
+      {
+        ret = true;
+      }
+    }
+    else if (model == DriverInterface::YDLIDAR_Tmini)
+    {
+      if (5 <= frequency && frequency <= 12)
+      {
+        ret = true;
+      }
+    }
+  }
+  else
+  {
+    if (5 <= frequency && frequency <= 16)
+    {
       ret = true;
     }
   }
@@ -538,11 +575,42 @@ inline bool isNetTOFLidar(int type) {
 inline bool isTriangleLidar(int type) {
   bool ret = false;
 
-  if (type == TYPE_TRIANGLE) {
+  if (type == TYPE_TRIANGLE ||
+    type == TYPE_SCL) {
     ret = true;
   }
 
   return ret;
+}
+
+/**
+ * @brief Whether it is a GS type LiDAR
+ * @param type  LiDAR type
+ * @return true if it is a Triangle type, otherwise false.
+ */
+inline bool isGSLidar(int type) 
+{
+  return (type == TYPE_GS);
+}
+
+/**
+ * @brief Whether it is a SCL type LiDAR
+ * @param type  LiDAR type
+ * @return true if it is a Triangle SCL type, otherwise false.
+ */
+inline bool isSCLLidar(int type) 
+{
+  return (type == TYPE_SCL);
+}
+
+inline bool isSDMLidar(int type)
+{
+  return (type == TYPE_SDM);
+}
+
+inline bool isDTSLidar(int type)
+{
+  return (type == TYPE_SDM18);
 }
 
 /**
@@ -603,7 +671,8 @@ inline bool isSupportHeartBeat(int model) {
  * @param smap  sampling rate map
  * @return true if it is valid, otherwise false.
  */
-inline bool isValidSampleRate(std::map<int, int>  smap) {
+inline bool isValidSampleRate(std::map<int, int> smap) 
+{
   if (smap.size() < 1) {
     return false;
   }
@@ -626,68 +695,61 @@ inline bool isValidSampleRate(std::map<int, int>  smap) {
  * @param defaultRate   LiDAR Defualt sampling rate code
  * @return  LiDAR sampling rate code
  */
-inline int ConvertUserToLidarSmaple(int model, int m_SampleRate,
-                                    int defaultRate) {
+inline int ConvertUserToLidarSmaple(int model,
+                                    int sampleRate,
+                                    int defaultRate)
+{
   int _samp_rate = 9;
-
-  switch (m_SampleRate) {
+  switch (sampleRate) 
+  {
     case 10:
       _samp_rate = DriverInterface::YDLIDAR_RATE_4K;
       break;
-
     case 16:
       _samp_rate = DriverInterface::YDLIDAR_RATE_8K;
       break;
-
     case 18:
       _samp_rate = DriverInterface::YDLIDAR_RATE_9K;
       break;
-
     case 20:
       _samp_rate = DriverInterface::YDLIDAR_RATE_10K;
       break;
-
     default:
       _samp_rate = defaultRate;
       break;
   }
 
-  if (!isOctaveLidar(model)) {
+  if (!isOctaveLidar(model)) 
+  {
     _samp_rate = 2;
-
-    switch (m_SampleRate) {
+    switch (sampleRate) 
+    {
       case 4:
         _samp_rate = DriverInterface::YDLIDAR_RATE_4K;
         break;
-
       case 8:
         _samp_rate = DriverInterface::YDLIDAR_RATE_8K;
         break;
-
       case 9:
         _samp_rate = DriverInterface::YDLIDAR_RATE_9K;
         break;
-
       default:
         break;
     }
-
-    if (model == DriverInterface::YDLIDAR_F4PRO) {
+    if (model == DriverInterface::YDLIDAR_F4PRO) 
+    {
       _samp_rate = 0;
-
-      switch (m_SampleRate) {
+      switch (sampleRate) 
+      {
         case 4:
           _samp_rate = DriverInterface::YDLIDAR_RATE_4K;
           break;
-
         case 6:
           _samp_rate = DriverInterface::YDLIDAR_RATE_8K;
           break;
-
         default:
           break;
       }
-
     }
   }
 
@@ -700,58 +762,59 @@ inline int ConvertUserToLidarSmaple(int model, int m_SampleRate,
  * @param rate      LiDAR sampling rate code
  * @return user sampling code
  */
-inline int ConvertLidarToUserSmaple(int model, int rate) {
+inline int ConvertLidarToUserSmaple(int model, int rate) 
+{
   int _samp_rate = 9;
 
-  switch (rate) {
+  if (!isOctaveLidar(model) && 
+      !isTOFLidarByModel(model))
+  {
+    switch (rate)
+    {
+    case DriverInterface::YDLIDAR_RATE_4K:
+      _samp_rate = 4;
+      break;
+    case DriverInterface::YDLIDAR_RATE_8K:
+      _samp_rate = 8;
+      if (model == DriverInterface::YDLIDAR_F4PRO)
+        _samp_rate = 6;
+      break;
+    case DriverInterface::YDLIDAR_RATE_9K:
+      _samp_rate = 9;
+      break;
+    case DriverInterface::YDLIDAR_RATE_10K:
+      _samp_rate = 10;
+      break;
+    default:
+      //修改默认为当前获取到采样率值
+      _samp_rate = rate;
+      break;
+    }
+  }
+  else
+  {
+    switch (rate)
+    {
     case DriverInterface::YDLIDAR_RATE_4K:
       _samp_rate = 10;
-
-      if (!isOctaveLidar(model)) {
-        _samp_rate = 4;
-      }
-
       break;
-
     case DriverInterface::YDLIDAR_RATE_8K:
       _samp_rate = 16;
-
-      if (!isOctaveLidar(model)) {
-        _samp_rate = 8;
-
-        if (model == DriverInterface::YDLIDAR_F4PRO) {
-          _samp_rate = 6;
-        }
-      }
-
       break;
-
     case DriverInterface::YDLIDAR_RATE_9K:
       _samp_rate = 18;
-
-      if (!isOctaveLidar(model)) {
-        _samp_rate = 9;
-      }
-
       break;
-
     case DriverInterface::YDLIDAR_RATE_10K:
       _samp_rate = 20;
-
-      if (!isOctaveLidar(model)) {
-        _samp_rate = 10;
-      }
-
       break;
-
+    case 4:
+      _samp_rate = 10;
+      break;
     default:
-      _samp_rate = 9;
-
-      if (isOctaveLidar(model)) {
-        _samp_rate = 18;
-      }
-
+      //修改默认为当前获取到采样率值
+      _samp_rate = rate;
       break;
+    }
   }
 
   return _samp_rate;
@@ -778,10 +841,10 @@ inline bool isValidValue(uint8_t value) {
 inline bool isVersionValid(const LaserDebug &info) {
   bool ret = false;
 
-  if (isValidValue(info.W3F4CusMajor_W4F0CusMinor) &&
-      isValidValue(info.W4F3Model_W3F0DebugInfTranVer) &&
-      isValidValue(info.W3F4HardwareVer_W4F0FirewareMajor) &&
-      isValidValue(info.W3F4BoradHardVer_W4F0Moth)) {
+  if (isValidValue(info.cVer) &&
+      isValidValue(info.debug2) &&
+      isValidValue(info.hfVer) &&
+      isValidValue(info.month)) {
     ret = true;
   }
 
@@ -796,10 +859,10 @@ inline bool isVersionValid(const LaserDebug &info) {
 inline bool isSerialNumbValid(const LaserDebug &info) {
   bool ret = false;
 
-  if (isValidValue(info.W2F5Output2K4K5K_W5F0Date) &&
-      isValidValue(info.W1F6GNoise_W1F5SNoise_W1F4MotorCtl_W4F0SnYear) &&
-      isValidValue(info.W7F0SnNumH) &&
-      isValidValue(info.W7F0SnNumH)) {
+  if (isValidValue(info.day) &&
+      isValidValue(info.year) &&
+      isValidValue(info.numH) &&
+      isValidValue(info.numH)) {
     ret = true;
   }
 
@@ -811,159 +874,142 @@ inline bool isSerialNumbValid(const LaserDebug &info) {
  * @param node  LiDAR node_info information
  * @param info  LiDAR LaserDebug information
  */
-inline void parsePackageNode(const node_info &node, LaserDebug &info) {
+inline void parsePackageNode(const node_info &node, LaserDebug &info) 
+{
   switch (node.index) {
-    case 0://scan frequency
-
+    case 0:
       break;
-
-    case 1://W3F3CusHardVer_W4F0CusSoftVer;
-      info.W3F4CusMajor_W4F0CusMinor = node.debugInfo;
+    case 1:
+      info.cVer = node.debugInfo;
       break;
-
-    case 2://W4F3Model_W3F0DebugInfTranVer
-      info.W4F3Model_W3F0DebugInfTranVer = node.debugInfo;
+    case 2:
+      info.debug2 = node.debugInfo;
       break;
-
-    case 3://W3F4HardwareVer_W4F0FirewareMajor
-      info.W3F4HardwareVer_W4F0FirewareMajor = node.debugInfo;
-
+    case 3:
+      //健康信息
+      info.health = node.debugInfo;
       break;
-
-    case 4://W7F0FirewareMinor
-      info.W7F0FirewareMinor = node.debugInfo;
-
+    case 4:
+      info.hfVer = node.debugInfo;
       break;
-
-    case 5://W3F4BoradHardVer_W4F0Moth
-      info.W3F4BoradHardVer_W4F0Moth = node.debugInfo;
-
+    case 5:
+      info.fVer = node.debugInfo;
       break;
-
-    case 6://W2F5Output2K4K5K_W5F0Date
-      info.W2F5Output2K4K5K_W5F0Date = node.debugInfo;
+    case 6:
       break;
-
-    case 7://W1F6GNoise_W1F5SNoise_W1F4MotorCtl_W4F0SnYear
-      info.W1F6GNoise_W1F5SNoise_W1F4MotorCtl_W4F0SnYear =
-        node.debugInfo;
+    case 7:
+      info.model = node.debugInfo;
       break;
-
-    case 8://W7F0SnNumH
-      info.W7F0SnNumH = node.debugInfo;
+    case 8:
       break;
-
-    case 9://W7F0SnNumL
-      info.W7F0SnNumL = node.debugInfo;
-
+    case 9:
+      info.year = node.debugInfo;
       break;
-
-    case 10://W7F0Health
-      info.W7F0Health = node.debugInfo;
-
+    case 10:
+      info.month = node.debugInfo;
       break;
-
-    case 11://W3F4CusHardVer_W4F0CusSoftVer
-      info.W3F4CusHardVer_W4F0CusSoftVer = node.debugInfo;
-
-    case 12://W7F0LaserCurrent
-      info.W7F0LaserCurrent = node.debugInfo;
+    case 11:
+      info.day = node.debugInfo;
       break;
-
+    case 12:
+      info.numH = node.debugInfo;
+      break;
+    case 13:
+      info.numL = node.debugInfo;
+      break;
     default:
       break;
   }
 
-  if (info.MaxDebugIndex > node.index) {
-    info.W3F4CusMajor_W4F0CusMinor = 0xff;
-  }
+  // if (info.MaxDebugIndex > node.index) {
+  //   info.W3F4CusMajor_W4F0CusMinor = 0xff;
+  // }
 
-  if (static_cast<int>(node.index) > info.MaxDebugIndex && node.index < 100) {
-    info.MaxDebugIndex = static_cast<int>(node.index);
+  if (node.index > info.maxIndex) {
+    info.maxIndex = node.index;
   }
 }
 
+// #include <iostream>
+// #include <iomanip>
 /**
  * @brief convert LaserDebug information to device_info
  * @param info      LiDAR LaserDebug information
  * @param value     LiDAR Device information
  * @return true if converted successfully, otherwise false.
  */
-inline bool ParseLaserDebugInfo(const LaserDebug &info, device_info &value) {
+inline bool parseLaserDebugInfo(const LaserDebug &debug, device_info &di)
+{
   bool ret = false;
-  uint8_t CustomVerMajor = (static_cast<uint8_t>
-                            (info.W3F4CusMajor_W4F0CusMinor) >> 4);
-  uint8_t CustomVerMinor = static_cast<uint8_t>
-                           (info.W3F4CusMajor_W4F0CusMinor) & 0x0F;
-  uint8_t lidarmodel = (static_cast<uint8_t>(info.W4F3Model_W3F0DebugInfTranVer)
-                        >> 3);
-  uint8_t hardwareVer = static_cast<uint8_t>
-                        (info.W3F4HardwareVer_W4F0FirewareMajor) >> 4;
-  uint8_t Moth = static_cast<uint8_t>(info.W3F4BoradHardVer_W4F0Moth) & 0x0F;
 
-  uint8_t Date = static_cast<uint8_t>(info.W2F5Output2K4K5K_W5F0Date) & 0x1F;
-  uint8_t Year = static_cast<uint8_t>
-                 (info.W1F6GNoise_W1F5SNoise_W1F4MotorCtl_W4F0SnYear) & 0x0F;
-  uint16_t Number = ((static_cast<uint8_t>(info.W7F0SnNumH) << 7) |
-                     static_cast<uint8_t>(info.W7F0SnNumL));
+  uint8_t model = uint8_t(debug.model & 0x0F);
+  uint8_t CustomVerMajor = uint8_t(debug.hfVer & 0x0F);
+  uint8_t CustomVerMinor = debug.fVer;
+  // uint8_t lidarmodel = uint8_t(debug.debug2) >> 3;
+  uint8_t hardwareVer = uint8_t(debug.hfVer) >> 4;
 
-  if (isVersionValid(info) && info.MaxDebugIndex > 0 && Year) {
+  uint8_t Year = uint8_t(debug.year >> 2);
+  uint8_t Moth = uint8_t(debug.month >> 3);
+  uint8_t Date = uint8_t(debug.day >> 2);
+  uint32_t Number = 
+    uint32_t(debug.year & 0x03) << 19 |
+    uint32_t(debug.month & 0x07) << 16 |
+    uint32_t(debug.day & 0x03) << 14 |
+    uint32_t(debug.numH & 0x7F) << 7 |
+    uint32_t(debug.numL & 0x7F);
 
-    if (isSerialNumbValid(info) && info.MaxDebugIndex > 8) {
-      value.firmware_version = (CustomVerMajor << 8 | CustomVerMinor);
-      value.hardware_version = hardwareVer;
-      value.model = lidarmodel;
-      uint32_t year = Year + 2015;
-      sprintf(reinterpret_cast<char *>(value.serialnum), "%04d", year);
-      sprintf(reinterpret_cast<char *>(value.serialnum + 4), "%02d", Moth);
-      sprintf(reinterpret_cast<char *>(value.serialnum + 6), "%02d", Date);
-      sprintf(reinterpret_cast<char *>(value.serialnum + 8), "%08d", Number);
-
-      for (int i = 0; i < 16; i++) {
-        value.serialnum[i] -= 48;
-      }
-
-      ret = true;
+  if (Moth && Date && Number)
+  {
+    di.firmware_version = uint16_t(CustomVerMajor << 8) |
+                          uint16_t(CustomVerMinor);
+    di.hardware_version = hardwareVer;
+    di.model = model;
+    std::stringstream ss;
+    ss << std::setw(4) << std::setfill('0') << int(Year + 2020);
+    ss << std::setw(2) << std::setfill('0') << int(Moth);
+    ss << std::setw(2) << std::setfill('0') << int(Date);
+    ss << std::setw(8) << std::setfill('0') << Number;
+    std::string sn(ss.str());
+    // 此处sprintf函数在Python调用中会导致缓存溢出
+    //  sprintf(reinterpret_cast<char*>(di.serialnum),
+    //    "%04u%02u%02u%08u", Year + 2020, Moth, Date, Number);
+    for (int i = 0; i < SDK_SNLEN && i < sn.size(); i++)
+    {
+      di.serialnum[i] = std::stoi(std::string(1, sn.at(i)));
     }
+
+    ret = true;
   }
 
   return ret;
 }
 
-/**
- * @brief print LiDAR version information
- * @param info      LiDAR Device information
- * @param port      LiDAR serial port or IP Address
- * @param baudrate  LiDAR serial baudrate or network port
- * @return true if Device information is valid, otherwise false
- */
-inline bool printfVersionInfo(const device_info &info, const std::string &port,
-                              int baudrate) {
-  if (info.firmware_version == 0 &&
-      info.hardware_version == 0) {
+YDLIDAR_API inline bool printfDeviceInfo(const device_info &di,
+                              int platformType=EPT_Module)
+{
+  if (di.firmware_version == 0 &&
+      di.hardware_version == 0) {
     return false;
   }
 
-  uint8_t Major = (uint8_t)(info.firmware_version >> 8);
-  uint8_t Minjor = (uint8_t)(info.firmware_version & 0xff);
-  printf("[YDLIDAR] Connection established in [%s][%d]:\n"
+  uint8_t Major = (uint8_t)(di.firmware_version >> 8);
+  uint8_t Minjor = (uint8_t)(di.firmware_version & 0xff);
+  
+  printf("[YDLIDAR] %s device info\n"
          "Firmware version: %u.%u\n"
          "Hardware version: %u\n"
          "Model: %s\n"
          "Serial: ",
-         port.c_str(),
-         baudrate,
+         EPT_Module == platformType ? "Module" : "Baseplate",
          Major,
          Minjor,
-         (unsigned int)info.hardware_version,
-         lidarModelToString(info.model).c_str());
-
-  for (int i = 0; i < 16; i++) {
-    printf("%01X", info.serialnum[i] & 0xff);
-  }
-
+         di.hardware_version,
+         lidarModelToString(di.model).c_str());
+  for (int i = 0; i < SDK_SNLEN; i++)
+    printf("%01X", di.serialnum[i] & 0xff);
   printf("\n");
   fflush(stdout);
+
   return true;
 }
 
@@ -996,6 +1042,85 @@ inline bool isV1Protocol(uint8_t protocol) {
   }
 
   return false;
+}
+
+//以16进制打印数据
+inline void printHex(const uint8_t *data, int size)
+{
+    if (!data || !size)
+        return;
+    for (int i=0; i<size; ++i)
+        printf("%02X", data[i]);
+    printf("\n");
+}
+
+//打印系统时间
+#define UNIX_PRINT_TIME  \
+  time_t currentTime = time(NULL); \
+  struct tm *localTime = localtime(&currentTime); \
+  printf("[%04d-%02d-%02d %02d:%02d:%02d]", \
+    (1900 + localTime->tm_year), \
+    (1 + localTime->tm_mon), \
+    localTime->tm_mday, \
+    localTime->tm_hour, \
+    localTime->tm_min, \
+    localTime->tm_sec);
+//格式化字符串
+#define FORMAT_STDOUT \
+  char buff[1024] = {0}; \
+  va_list ap; \
+  va_start(ap, fmt); \
+  vsprintf(buff, fmt, ap); \
+  va_end(ap); \
+  printf(buff); \
+  printf("\n");
+
+//调试
+inline void debug(char* fmt, ...)
+{
+#ifdef _WIN32
+#else
+  UNIX_PRINT_TIME
+#endif
+  printf("[debug] ");
+  FORMAT_STDOUT
+  fflush(stdout);
+}
+
+//常规
+inline void info(char* fmt, ...)
+{
+#ifdef _WIN32
+#else
+  UNIX_PRINT_TIME
+#endif
+  printf("[info] ");
+  FORMAT_STDOUT
+  fflush(stdout);
+}
+
+//警告
+inline void warn(char* fmt, ...)
+{
+#ifdef _WIN32
+#else
+  UNIX_PRINT_TIME
+#endif
+  printf("[warn] ");
+  FORMAT_STDOUT
+  fflush(stdout);
+}
+
+//错误
+inline void error(char* fmt, ...)
+{
+#ifdef _WIN32
+#else
+  UNIX_PRINT_TIME
+#endif
+  printf("[error] ");
+  FORMAT_STDOUT
+  fflush(stdout);
 }
 
 }//common
