@@ -1,4 +1,4 @@
-dlidar_ros2_driver_node:
+ydlidar_ros2_driver_node:
   ros__parameters:
     port: /dev/ttyUSB0
     frame_id: laser_frame
@@ -12,7 +12,7 @@ dlidar_ros2_driver_node:
     reversion: true
     inverted: true
     auto_reconnect: true
-    isSingleChannel: false
+    isSingleChannel: true
     intensity: false
     support_motor_dtr: true
     angle_max: 180.0
