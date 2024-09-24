@@ -65,4 +65,6 @@ COPY ros_entrypoint.sh /ros_entrypoint.sh
 # Ensure the entrypoint script is executable
 RUN chmod +x /ros_entrypoint.sh
 
-CMD ["/bin/bash", "-i", "-c", "ros2 launch ydlidar_ros2_driver ydlidar_launch.py"]
+COPY ydlidar_params.yaml /root/ydlidar_params.yaml
+
+CMD ["/bin/bash", "-i", "-c", "ros2 launch ydlidar_ros2_driver ydlidar_launch.py params_file:=/root/ydlidar_params.yaml"]
