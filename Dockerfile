@@ -1,4 +1,4 @@
-FROM frankjoshua/ros2 
+FROM frankjoshua/ros2:humble
 
 # ARG USERNAME=ros
 # ARG USER_UID=1000
