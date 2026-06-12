@@ -54,7 +54,7 @@ if [[ -z "${LOCAL}" ]]; then
   # Create builder for docker
   BUILDER=$(docker buildx create --use)
   # Setup qemu for multiplatform builds
-  docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+  docker run --rm --privileged tonistiigi/binfmt --install all
 fi
 # Build container on all achitectures in parallel and push to Docker Hub
 eval "docker buildx build $PUSH -t $TAG $ARCHITECTURE . $QUIET"
